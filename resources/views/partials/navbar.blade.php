@@ -77,7 +77,7 @@
                     <div>
                         <h5 class="mb-0">{{ Auth::user()->name }}</h5>
                         <small class="text-secondary">
-                            {{ Auth::user()->role === 'admin' ? 'Amministratore' : 'Utente' }}
+                            {{ Auth::user()->roleLabel() }}
                         </small>
                     </div>
 
