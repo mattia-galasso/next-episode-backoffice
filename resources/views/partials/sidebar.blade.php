@@ -2,10 +2,10 @@
     <a href="/" class="">
         <div class="logo-next-episode">
             {{-- LOGO FULL --}}
-            <img src="{{ asset('./img/logo_nextepisode.png') }}" alt="NewEpisode" class="logo-full">
+            <img src="{{ asset('./img/logo_nextepisode.png') }}" alt="NextEpisode" class="logo-full">
 
             {{-- LOGO COLLAPSED ONLY ICON --}}
-            <img src="{{ asset('./img/logo.png') }}" alt="NewEpisode" class="logo-icon">
+            <img src="{{ asset('./img/logo.png') }}" alt="NextEpisode" class="logo-icon">
 
             <p class="administration-logo-text">- Administration</p>
         </div>

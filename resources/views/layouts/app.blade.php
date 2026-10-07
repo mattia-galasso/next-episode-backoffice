@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'NewEpisode') }} - @yield('title')</title>
+    <title>{{ config('app.name', 'NextEpisode') }} - @yield('title')</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('./img/favicon.ico') }}" type="image/ico">
