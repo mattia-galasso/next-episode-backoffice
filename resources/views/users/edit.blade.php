@@ -88,6 +88,10 @@
                         Utente
                     </option>
 
+                    <option value="demo" {{ $user->role === "demo" ? 'selected' : '' }}>
+                        Demo
+                    </option>
+
                     <option value="admin" {{ $user->role === "admin" ? 'selected' : '' }}>
                         Amministratore
                     </option>
