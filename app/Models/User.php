@@ -54,4 +54,22 @@ class User extends Authenticatable
     {
         return in_array($this->role, ['admin', 'demo']);
     }
+
+    public function roleLabel(): string
+    {
+        return match ($this->role) {
+            'admin' => 'Amministratore',
+            'demo' => 'Demo',
+            default => 'Utente',
+        };
+    }
+
+    public function roleBadgeClass(): string
+    {
+        return match ($this->role) {
+            'admin' => 'text-bg-info',
+            'demo' => 'text-bg-warning',
+            default => 'text-bg-secondary',
+        };
+    }
 }

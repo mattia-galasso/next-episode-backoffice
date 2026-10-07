@@ -23,11 +23,8 @@
         <div class="col-12 col-md-6 col-xl-4">
             <div class="card create-card h-100 d-flex flex-row align-items-center justify-content-between gap-3">
                 <div class="d-flex align-items-center gap-3 overflow-hidden">
-                    <img src="{{ asset('./img/actor_image_not_found.png') }}"
-                        alt="{{ $user->name }}"
-                        width="48"
-                        height="48"
-                        class="rounded-circle flex-shrink-0">
+                    <img src="{{ asset('./img/actor_image_not_found.png') }}" alt="{{ $user->name }}" width="48"
+                        height="48" class="rounded-circle flex-shrink-0">
 
                     <div class="overflow-hidden">
                         <div class="fw-bold">
@@ -38,14 +35,13 @@
                             {{ $user->email }}
                         </div>
 
-                        <span class="badge mt-2 {{ $user->role === 'admin' ? 'text-bg-info' : 'text-bg-secondary' }}">
-                            {{ $user->role === 'admin' ? 'Amministratore' : 'Utente' }}
+                        <span class="badge mt-2 {{ $user->roleBadgeClass() }}">
+                            {{ $user->roleLabel() }}
                         </span>
                     </div>
                 </div>
 
-                <a href="{{ route('users.edit', $user) }}"
-                    class="btn btn-sm btn-secondary flex-shrink-0">
+                <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-secondary flex-shrink-0">
                     <i class="bi bi-pencil"></i>
                 </a>
             </div>
