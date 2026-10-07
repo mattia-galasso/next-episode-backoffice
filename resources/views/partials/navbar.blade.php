@@ -38,7 +38,7 @@
                             <div class="lh-1">
                                 <p class="m-0">{{ Auth::user()->name }}</p>
                                 <small class="text-secondary">
-                                    {{ Auth::user()->role === 'admin' ? 'Amministratore' : 'Utente' }}
+                                    {{ Auth::user()->roleLabel() }}
                                 </small>
                             </div>
                             <div class="dropdown-toggle"></div>
