@@ -31,18 +31,18 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            'role' => 'required|in:user,admin,demo',
+        ]);
 
         if ($request->user()->id === $user->id) {
             $data['role'] = $user->role;
         }
 
-
         $user->update($data);
 
         return redirect()->route('users.index');
     }
-
 
     /* RESOURCE NON UTILIZZATE */
 
