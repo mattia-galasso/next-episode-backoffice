@@ -46,4 +46,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Demo Role
+     */
+    public function canViewBackoffice(): bool
+    {
+        return in_array($this->role, ['admin', 'demo']);
+    }
 }

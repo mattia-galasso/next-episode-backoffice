@@ -13,7 +13,7 @@ class PlatformPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->role === 'admin';
+        return $user->canViewBackoffice();
     }
 
     /**
@@ -21,7 +21,7 @@ class PlatformPolicy
      */
     public function view(User $user, Platform $platform): bool
     {
-        return $user->role === 'admin';
+        return $user->canViewBackoffice();
     }
 
     /**

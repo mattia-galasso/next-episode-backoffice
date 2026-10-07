@@ -13,7 +13,7 @@ class ActorPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->role === 'admin';
+        return $user->canViewBackoffice();
     }
 
     /**
@@ -21,7 +21,7 @@ class ActorPolicy
      */
     public function view(User $user, Actor $actor): bool
     {
-        return $user->role === 'admin';
+        return $user->canViewBackoffice();
     }
 
     /**

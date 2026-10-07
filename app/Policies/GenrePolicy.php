@@ -13,7 +13,7 @@ class GenrePolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->role === 'admin';
+        return $user->canViewBackoffice();
     }
 
     /**
@@ -21,7 +21,7 @@ class GenrePolicy
      */
     public function view(User $user, Genre $genre): bool
     {
-        return $user->role === 'admin';
+        return $user->canViewBackoffice();
     }
 
     /**

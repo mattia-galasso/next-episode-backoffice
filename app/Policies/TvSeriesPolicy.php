@@ -13,7 +13,7 @@ class TvSeriesPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->role === 'admin';
+        return $user->canViewBackoffice();
     }
 
     /**
@@ -21,7 +21,7 @@ class TvSeriesPolicy
      */
     public function view(User $user, TvSeries $tvSeries): bool
     {
-        return $user->role === 'admin';
+        return $user->canViewBackoffice();
     }
 
     /**

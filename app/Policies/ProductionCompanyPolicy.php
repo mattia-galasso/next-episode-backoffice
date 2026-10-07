@@ -13,7 +13,7 @@ class ProductionCompanyPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->role === 'admin';
+        return $user->canViewBackoffice();
     }
 
     /**
@@ -21,7 +21,7 @@ class ProductionCompanyPolicy
      */
     public function view(User $user, ProductionCompany $productionCompany): bool
     {
-        return $user->role === 'admin';
+        return $user->canViewBackoffice();
     }
 
     /**
