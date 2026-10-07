@@ -1,66 +1,54 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# NextEpisode | Catalogo di serie TV
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Piattaforma per il catalogo di serie TV, sviluppata come progetto finale individuale della specializzazione in PHP e Laravel di [Boolean](https://boolean.careers).
 
-## About Laravel
+Questo repository contiene il **backoffice in Laravel** e le **API REST** che alimentano il sito pubblico, sviluppato in React in un repository separato: [next-episode-frontend](https://github.com/mattia-galasso/next-episode-frontend).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**🔗 Backoffice: [next-episode-backoffice.onrender.com](https://next-episode-backoffice.onrender.com)**
+Accesso demo in sola lettura: `demo@nextepisode.it` / `Demo1234`
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**🔗 Sito pubblico: [nextepisodedemo.netlify.app](https://nextepisodedemo.netlify.app)**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+> Il backoffice è ospitato su un piano gratuito che va in pausa dopo un periodo di inattività, il primo caricamento può richiedere fino a un minuto.
 
-## Learning Laravel
+## Funzionalità
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Autenticazione** con Laravel Breeze
+- **Ruoli e permessi** gestiti con le policy: amministratore con accesso completo, utente demo in sola lettura
+- **Serie TV** con creazione, modifica ed eliminazione, caricamento di poster e banner
+- **Cast** con assegnazione degli attori e del loro ruolo nella serie
+- **Piattaforme di streaming** associate a ogni serie con il relativo link
+- **Gestione** di attori, generi, piattaforme e case di produzione
+- **Gestione utenti** con assegnazione dei ruoli, riservata all'amministratore
+- **API REST** per il frontend, con elenco paginato e dettaglio tramite slug
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Database
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Relazione | Tipo |
+|---|---|
+| Casa di produzione → Serie TV | Uno a molti |
+| Serie TV ↔ Generi | Molti a molti |
+| Serie TV ↔ Piattaforme | Molti a molti, con link alla piattaforma |
+| Serie TV ↔ Attori | Molti a molti, con ruolo dell'attore |
 
-## Laravel Sponsors
+## API
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+| Endpoint | Descrizione |
+|---|---|
+| `GET /api/tvseries/homepage` | Serie in evidenza per la homepage |
+| `GET /api/tvseries` | Elenco paginato delle serie |
+| `GET /api/tvseries/{slug}` | Dettaglio di una serie con cast, generi e piattaforme |
+| `GET /api/genres` | Elenco dei generi |
+| `GET /api/platforms` | Elenco delle piattaforme |
+| `GET /api/actors/{slug}` | Dettaglio di un attore |
+| `GET /api/actors/search` | Ricerca degli attori |
 
-### Premium Partners
+## Stack
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+| Backend | Frontend | Database | Deploy |
+|---|---|---|---|
+| PHP 8.3, Laravel 12, Eloquent, Breeze, Blade, Bootstrap, Vite | React | MySQL | Render con Docker, Netlify, Aiven |
 
-## Contributing
+## Note sulla demo
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+L'account demo può consultare tutte le sezioni del backoffice ma non modificare i dati. Le immagini caricate dalla demo online non sono permanenti, perché l'hosting gratuito non mantiene i file tra un riavvio e l'altro.
